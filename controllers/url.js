@@ -13,8 +13,11 @@ async function handleGenerateNewShortURL(req, res) {
         visitHistory: [],
     });
 
-    return res.json({ id: generatedId });
-};
+    return res.render('home', {
+        id: generatedId,
+    });
+
+}
 
 module.exports = {
     handleGenerateNewShortURL,

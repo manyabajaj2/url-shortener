@@ -19,11 +19,13 @@ app.set('views', path.resolve("./views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
+
 app.use("/url", urlRoutes)
 app.use("/", staticRoute)
 
 
 app.get("/url/:generatedId", async (req, res) => {
+    console.log("Received param:", req.params.generatedId);
     const generatedId = req.params.generatedId;
     const entry = await URL.findOneAndUpdate({
         shortId: generatedId
@@ -39,6 +41,7 @@ app.get("/url/:generatedId", async (req, res) => {
     if (!entry) {
         return res.status(404).send("Not found")
     }
+    console.log(entry.requiredURL);
 
     res.redirect(entry.requiredURL)
 })

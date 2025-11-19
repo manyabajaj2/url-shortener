@@ -11,9 +11,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    visitHistory: [{ timeStamp: { type: Number } }],
+    visitHistory: [{ timestamps: { type: Number } }],
 
-}, { timeStamps: true }
+}, { timestamps: true }
 );
 
 
